@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mandated Reporting with Care (Very Simple)</title>
+  <style>
+    /* VERY BASIC STYLES – like a beginner site */
+    body { font-family: Arial, sans-serif; margin: 0; background:#f6f6f6; }
+    header { background:#222; color:#fff; padding:12px; position:sticky; top:0; }
+    header .title { font-weight:bold; }
+    nav { margin-top:8px; }
+    nav a { color:#fff; text-decoration:none; margin-right:10px; font-size:14px; }
+    main { max-width:900px; margin: 16px auto; padding: 0 10px 40px; }
+    .card { background:#fff; border:1px solid #ddd; padding:14px; margin:12px 0; border-radius:6px; }
+    h2 { margin: 8px 0 6px; font-size:22px; }
+    h3 { margin: 10px 0 6px; font-size:18px; }
+    .note { font-size:12px; color:#555; }
+    .row { display:flex; gap:10px; flex-wrap:wrap; }
+    .col { flex:1 1 260px; }
+    button, .btn { background:#eee; border:1px solid #bbb; padding:8px 10px; border-radius:4px; cursor:pointer; }
+    button:hover, .btn:hover { background:#e2e2e2; }
+    .pill { display:inline-block; border:1px solid #ccc; padding:4px 8px; font-size:12px; border-radius: 999px; margin:2px 6px 2px 0; }
+    .muted { color:#666; }
+    .foot { font-size:12px; color:#666; text-align:center; margin-top:20px; }
+    .hide { display:none; }
+    /* print */
+    @media print { header, .noprint { display:none; } body { background:#fff; } .card { page-break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <header class="noprint">
+    <div class="title">🧭 Mandated Reporting with Care (Very Simple Prototype)</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#mr101">MR 101</a>
+      <a href="#scenarios">Scenarios</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#state">Know Your State</a>
+      <a href="#lessons">Lesson Plans</a>
+      <a href="#reflect">Reflect</a>
+      <a href="#about">About</a>
+      <button onclick="window.print()" style="float:right">Print</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="card">
+      <h2>Welcome</h2>
+      <p><b>Mandated Reporting with Care</b> is a super simple website that helps students and childcare workers practice ethical choices around child safety. It uses plain language, short examples, and tiny tools you can print.</p>
+      <div>
+        <span class="pill">Kohlberg (moral reasoning)</span>
+        <span class="pill">Gilligan (ethics of care)</span>
+        <span class="pill">Rest (sensitivity→judgment→motivation→action)</span>
+        <span class="pill">Trauma‑informed + Equity</span>
+      </div>
+      <p class="note">Disclaimer: This is an educational prototype. It is <b>not</b> legal advice. Laws vary by state. Use the official links in “Know Your State”.</p>
+    </section>
+
+    <section id="mr101" class="card">
+      <h2>Mandated Reporting 101 (Very Short)</h2>
+      <div class="row">
+        <div class="col">
+          <h3>What is it?</h3>
+          <p>Some jobs require you by law to report suspected abuse or neglect of a child. This duty is called <b>mandated reporting</b>.</p>
+        </div>
+        <div class="col">
+          <h3>Why do it?</h3>
+          <p>To help keep kids safe. Morally, we care for others (Gilligan). We follow fair rules and duties (Kohlberg). We notice, judge, and act (Rest).</p>
+        </div>
+        <div class="col">
+          <h3>How to think</h3>
+          <ul>
+            <li>Use <b>objective notes</b> (what you saw/heard).</li>
+            <li>Avoid <b>leading questions</b>.</li>
+            <li>Follow <b>policy</b> and <b>timelines</b>.</li>
+            <li>Be <b>kind</b> and <b>trauma‑informed</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="scenarios" class="card">
+      <h2>Interactive Scenarios (Tiny)</h2>
+      <p class="muted">Click a scenario and choose an option. Simple feedback appears below.</p>
+
+      <div class="card">
+        <h3>Scenario A: A bruise and a whisper</h3>
+        <p>You see a bruise on a child’s upper arm. They quietly say, “I don’t want to go home.” What’s your first step?</p>
+        <button onclick="show('sA1')">Ask leading questions</button>
+        <button onclick="show('sA2')">Write objective notes & stay calm</button>
+        <div id="sA1" class="hide">
+          <p><b>Feedback:</b> Not ideal. Leading questions can shut down a child and harm accuracy. Try open prompts or simply document. (Rest: sensitivity without judgment)</p>
+        </div>
+        <div id="sA2" class="hide">
+          <p><b>Good move:</b> Note exact words in quotes, time, place. Inform your supervisor and make a timely report per policy. (Kohlberg duty; Gilligan care)</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Scenario B: Too many absences</h3>
+        <p>A student missed 7 days. Rumors say “family drama.” What do you do?</p>
+        <button onclick="show('sB1')">Assume neglect and report now</button>
+        <button onclick="show('sB2')">Check bias & gather facts</button>
+        <div id="sB1" class="hide"><p><b>Feedback:</b> Be careful. Assumptions can cause harm. Focus on observations and policy threshold.</p></div>
+        <div id="sB2" class="hide"><p><b>Nice:</b> Review records, consult policy/supervisor. If threshold is met, report. If not, connect supports. (Rest: action with care)</p></div>
+      </div>
+
+      <div class="card">
+        <h3>Scenario C: Disclosure at pickup</h3>
+        <p>Child says, “I’m scared to go with Uncle,” while a caregiver stands there.</p>
+        <button onclick="show('sC1')">Question child in front of caregiver</button>
+        <button onclick="show('sC2')">Follow safety & privacy protocol</button>
+        <div id="sC1" class="hide"><p><b>Feedback:</b> Not great. Avoid confronting in front of others. Prioritize safety, privacy, and policy.</p></div>
+        <div id="sC2" class="hide"><p><b>Good:</b> Alert admin, use release policy, contact authorities as required. (Trauma‑informed + duty)</p></div>
+      </div>
+
+      <div class="card">
+        <h3>Scenario D: Text from a teen cousin</h3>
+        <p>A teen relative texts that they are being hurt at home. You are unsure if your duty applies.</p>
+        <button onclick="show('sD1')">Promise to keep it secret</button>
+        <button onclick="show('sD2')">Explain limits & get help</button>
+        <div id="sD1" class="hide"><p><b>Feedback:</b> Promising secrecy can conflict with safety. Be honest and supportive.</p></div>
+        <div id="sD2" class="hide"><p><b>Yes:</b> Explain you might have to share to keep them safe, and follow reporting guidance. (Honesty + care)</p></div>
+      </div>
+    </section>
+
+    <section id="toolkit" class="card">
+      <h2>Toolkit (Printables)</h2>
+      <div class="card">
+        <h3>1‑Page Checklist: See • Note • Report • Support</h3>
+        <ol>
+          <li><b>See</b>: who/what/when/where (only facts you observed).</li>
+          <li><b>Note</b>: exact quotes, date/time, objective language.</li>
+          <li><b>Report</b>: follow your state’s process and timelines.</li>
+          <li><b>Support</b>: be calm, don’t promise secrecy, keep dignity.</li>
+        </ol>
+        <button onclick="window.print()">Print this page</button>
+      </div>
+
+      <div class="card">
+        <h3>Observation Log (copy into any doc)</h3>
+        <pre style="white-space:pre-wrap; background:#fafafa; border:1px solid #ddd; padding:8px;">Date/Time:
+Location:
+Student/Child initials:
+What I saw/heard (objective):
+Exact words (quotes):
+Actions taken:
+Who I told / report number:
+Next steps:
+        </pre>
+      </div>
+
+      <div class="card">
+        <h3>Conversation Tips (very short)</h3>
+        <ul>
+          <li>“Thank you for telling me.”</li>
+          <li>“You are not in trouble.”</li>
+          <li>“I may need to share this to help keep you safe.”</li>
+          <li>Avoid why-questions; don’t investigate.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="state" class="card">
+      <h2>Know Your State (Links Only)</h2>
+      <p class="note">Use official sources. These are placeholders—replace with your state’s real pages.</p>
+      <ul>
+        <li><a href="#" onclick="alert('Add your state hotline link here.')">WI: Mandated Reporter Hotline (add link)</a></li>
+        <li><a href="#" onclick="alert('Add your state statute link here.')">WI: Statutes/Guidance (add link)</a></li>
+        <li><a href="#" onclick="alert('Add your district policy link here.')">Local district policy (add link)</a></li>
+      </ul>
+    </section>
+
+    <section id="lessons" class="card">
+      <h2>Mini Lesson Plans (20–30 min)</h2>
+      <div class="card">
+        <h3>Lesson 1: Feelings & Safety Words</h3>
+        <p><b>Goal:</b> Practice naming feelings and safe adults. <b>Theory:</b> Care ethics (Gilligan).</p>
+        <p><b>Steps:</b> read a short story → discuss feelings → draw a “safe hand” (5 safe adults) → share.</p>
+      </div>
+      <div class="card">
+        <h3>Lesson 2: See vs Guess</h3>
+        <p><b>Goal:</b> Separate facts from interpretations. <b>Theory:</b> Rest (sensitivity & judgment).</p>
+        <p><b>Steps:</b> show 3 pictures → write only what you see → compare with guesses → reflect.</p>
+      </div>
+      <div class="card">
+        <h3>Lesson 3: Help Steps</h3>
+        <p><b>Goal:</b> Learn simple help steps (See‑Note‑Report‑Support). <b>Theory:</b> Kohlberg (duty).</p>
+        <p><b>Steps:</b> teach the 4 steps → role‑play a calm response → quick exit ticket.</p>
+      </div>
+    </section>
+
+    <section id="reflect" class="card">
+      <h2>Reflect (No data saved)</h2>
+      <p>Write a few sentences for yourself. Your text stays on your device and will clear if you refresh.</p>
+      <textarea id="journal" rows="6" style="width:100%;"></textarea>
+      <div style="margin-top:8px;">
+        <button onclick="saveLocal()">Save to this browser</button>
+        <button onclick="clearLocal()">Clear</button>
+      </div>
+      <p class="note">Prompts: When unsure, what extra info would you seek? Which choice showed care and duty? What would you do next time?</p>
+    </section>
+
+    <section id="about" class="card">
+      <h2>About & Credits</h2>
+      <p>Made as a simple capstone prototype to teach ethical thinking about mandated reporting. Focuses on plain language, kindness, and practical steps.</p>
+      <ul>
+        <li><b>Theory anchors:</b> Kohlberg, Gilligan, Rest.</li>
+        <li><b>Approach:</b> trauma‑informed, equity‑aware, child‑first language.</li>
+        <li><b>Accessibility:</b> alt text, high contrast, print friendly.</li>
+      </ul>
+      <p class="note">Tip: You can paste this file into a free host (e.g., Google Drive web preview, GitHub Pages) or into a Google Site page as an embed.</p>
+    </section>
+
+    <div class="foot">© Mandated Reporting with Care – Educational use only</div>
+  </main>
+
+  <script>
+    // Tiny JS – show simple feedback blocks
+    function show(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.classList.remove('hide');
+    }
+    // Local save for journal
+    const KEY = 'mrwc_journal_v1';
+    function saveLocal(){ localStorage.setItem(KEY, document.getElementById('journal').value); alert('Saved in this browser.'); }
+    function clearLocal(){ document.getElementById('journal').value=''; localStorage.removeItem(KEY); }
+    (function(){ var v = localStorage.getItem(KEY); if(v){ document.getElementById('journal').value = v; } })();
+  </script>
+</body>
+</html>
